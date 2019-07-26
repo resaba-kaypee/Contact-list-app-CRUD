@@ -6,13 +6,13 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const app = express();
-app.use(express.static('./src'));
+app.use(express.static(path.join(__dirname, './src')));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
 
-app.set('views', path.join(__dirname, '/views'));
+app.set('views', path.join(__dirname, './views'));
 app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layouts'}));
 app.set('view engine', 'hbs');
 app.listen(3000, () => {
